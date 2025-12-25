@@ -150,7 +150,7 @@ export default function CartModal() {
                       alt={item.name}
                       className="cart-item-image"
                       onError={(e) => {
-                        e.target.src = "/assets/logo/favicon.png";
+                        e.target.src = normalizePath("/assets/logo/favicon.png");
                       }}
                     />
                     <div className="cart-item-info">

@@ -113,7 +113,7 @@ export default function SizeSelectionModal() {
             src={normalizePath(product.image)}
             alt={product.name}
             onError={(e) => {
-              e.target.src = "/assets/logo/favicon.png";
+              e.target.src = normalizePath("/assets/logo/favicon.png");
             }}
           />
           <p>{product.name}</p>
