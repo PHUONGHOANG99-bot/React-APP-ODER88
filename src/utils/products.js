@@ -6,7 +6,9 @@ import { sanitizeProduct as sanitizeProductFn } from "./encoding.js";
 export async function loadProducts() {
   try {
     console.log("Đang load sản phẩm từ JSON...");
-    const response = await fetch("/products.json");
+    // Sử dụng import.meta.env.BASE_URL để hỗ trợ GitHub Pages base path
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const response = await fetch(`${baseUrl}products.json`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

@@ -4,18 +4,21 @@
 export function normalizePath(path) {
   if (!path) return path;
   
-  // Trong Vite, public folder được serve ở root
-  // Nếu path đã bắt đầu bằng /, giữ nguyên
+  // Lấy base URL từ Vite (sẽ là '/React-APP-ODER88/' trên GitHub Pages, '/' ở local)
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  
+  // Nếu path đã bắt đầu bằng /, thêm base URL vào
   if (path.startsWith("/")) {
-    return path;
+    // Loại bỏ / đầu tiên và thêm base URL
+    return `${baseUrl}${path.slice(1)}`;
   }
   
-  // Nếu path bắt đầu bằng assets/, thêm / ở đầu
+  // Nếu path bắt đầu bằng assets/, thêm base URL vào
   if (path.startsWith("assets/")) {
-    return `/${path}`;
+    return `${baseUrl}${path}`;
   }
   
-  // Các trường hợp khác, thêm / ở đầu
-  return `/${path}`;
+  // Các trường hợp khác, thêm base URL vào
+  return `${baseUrl}${path}`;
 }
 
